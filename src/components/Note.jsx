@@ -1,31 +1,32 @@
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-function Note(props) {
-  const [isCross, setLine] = useState(false);
+function NotePara(props) {
 
-  function handleClick() {
-    props.onDelete(props.id);
-  }
+  const [isCross, setLine] = useState(false);
 
   function cross() {
     !isCross ? setLine(true) : setLine(false);
   }
+  return (
+      <p className="note-p"
+        onClick={cross}
+        style={{ textDecoration: isCross ? "line-through" : "" }}
+      >
+        {props.p}
+      </p>
+  );
+}
+
+function Note(props) {
+  function handleClick() {
+    props.onDelete(props.id);
+  }
 
   return (
     <div className="note">
-      <h1
-        onClick={cross}
-        style={{ textDecoration: isCross ? "line-through" : "" }}
-      >
-        {props.title}
-      </h1>
-      <p
-        onClick={cross}
-        style={{ textDecoration: isCross ? "line-through" : "" }}
-      >
-        {props.content}
-      </p>
+      <h1>{props.title}</h1>
+      {props.content}
       <button onClick={handleClick}>
         <DeleteIcon />
       </button>
@@ -33,4 +34,4 @@ function Note(props) {
   );
 }
 
-export default Note;
+export {Note, NotePara};
