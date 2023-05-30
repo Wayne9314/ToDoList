@@ -51,6 +51,9 @@ footer p {
 }
 .note p {
   font-size: 1.1em;
+  border-radius: 7px;
+  box-shadow: 0 1px 4px #e0e0e0;
+  padding: 10px;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
