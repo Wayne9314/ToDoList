@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import {Note, NotePara} from "./Note";
+import { Note, NotePara } from "./Note";
 import CreateArea from "./CreateArea";
-import {v4} from "uuid";
+import { v4 } from "uuid";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([{
+    id: 0,
+    title: "Intro",
+    content: ["This is the simple ToDoList",
+      "Simply add title and content into list.",
+      "Add more than one content in a title.",
+      "Click the content to cross the thing that have done.",
+      "Finally click the delete icon to delete all."]
+  }]);
 
   function addNote(newNote) {
     const istitle = notes.findIndex((note) => {
@@ -21,7 +29,7 @@ function App() {
         return [
           ...prevNotes,
           {
-            id:v4(),
+            id: v4(),
             title: newNote.title,
             content: [newNote.content]
           }
